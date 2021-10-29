@@ -21,7 +21,7 @@ With react-freeze, we are able to suspend renders for such screens and as a resu
 
 > You have to be using React Native 0.64 or higher and react-navigation 5.x or 6.x.
 
-Thanks to the fact [react-navigation](https://reactnavigation.org/) relies on [react-native-screens](https://github.com/software-mansion/react-native-screens) we pubslihed an updated version of the screens library that takes advantage of the information about which screens should be active.
+Thanks to the fact [react-navigation](https://reactnavigation.org/) relies on [react-native-screens](https://github.com/software-mansion/react-native-screens) we published an updated version of the screens library that takes advantage of the information about which screens should be active.
 In order to try react-freeze in your React Native app that uses React Navigation you need to upgrade react-native-screens to version 3.9.0:
 
 ```bash
@@ -39,7 +39,7 @@ enableFreeze(true);
 
 The new react-native-screens library is compatible with React Navigation v5 and v6, however, when using React Navigation v5 you also need to enable "screens" support. This can be done by adding call to `enableScreens(true)` in your main application file and passing `detachInactiveScreens` option to your navigators (stack / tabs / etc.).
 
-**IMPORTANT:** The current version of screens/freeze integration, freezes updates only on views that are more than one level deep the stack hierarchy (the top and second to top screens are not freezing). This is necessary for slide-to-go-back functionality to work as by skliding back we may reveal the content that is displayed below. This is something we plan on improving in the future such that only the top screen is not frozen.
+**IMPORTANT:** The current version of screens/freeze integration, freezes updates only on views that are more than one level deep the stack hierarchy (the top and second to top screens are not freezing). This is necessary for slide-to-go-back functionality to work as by sliding back we may reveal the content that is displayed below. This is something we plan on improving in the future such that only the top screen is not frozen.
 
 # Quick start - using Freeze directly (React and React Native) ⚡
 
@@ -60,9 +60,9 @@ import { Freeze } from "react-freeze";
 Wrap some components you want to freeze and pass `freeze` option to control whether renders in that components should be suspended:
 
 ```js
-function SomeComponent({ shouldSuspendeRendering }) {
+function SomeComponent({ shouldSuspendRendering }) {
   return (
-    <Freeze freeze={shouldSuspendeRendering}>
+    <Freeze freeze={shouldSuspendRendering}>
       <MyOtherComponent />
     </Freeze>
   );
@@ -104,7 +104,7 @@ All state changes are executed as usual, they just won't trigger a render of the
 
 ## Whan happens to the non-react state of the component after defrost? Like for example scroll position?
 
-Since all the "naitve views" (DOM elements or platform-specific views in react native) are kept when the component is frozen their state (such as scroll position, text typed into text input fields, etc.) is restored when they come back from the frozen state.
+Since all the "native views" (DOM elements or platform-specific views in react native) are kept when the component is frozen their state (such as scroll position, text typed into text input fields, etc.) is restored when they come back from the frozen state.
 In fact, they are just the same component (same DOM nodes for react-dom / same views for react-native).
 
 ## What happens when there is an update in a redux store that frozen component is subscribed to?
