@@ -25,7 +25,13 @@ Thanks to the fact [react-navigation](https://reactnavigation.org/) relies on [r
 In order to try react-freeze in your React Native app that uses React Navigation you need to upgrade react-native-screens to version 3.9.0:
 
 ```bash
-yarn update react-native-screens@3.9.0
+yarn upgrade react-native-screens@3.9.0
+```
+
+If you're building for ios you also need to run
+
+```bash
+pod install --project-directory=ios
 ```
 
 Then enable experimental freeze support using new method we added to screens library.
