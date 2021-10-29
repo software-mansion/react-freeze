@@ -28,6 +28,12 @@ In order to try react-freeze in your React Native app that uses React Navigation
 yarn upgrade react-native-screens@3.9.0
 ```
 
+If you're building for ios you also need to run
+
+```bash
+pod install --project-directory=ios
+```
+
 Then enable experimental freeze support using new method we added to screens library.
 In order to do that, add the following snippet (along with the import) to the main file of your application:
 
