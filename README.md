@@ -108,7 +108,7 @@ When profiling React-Native apps with [React Native Debugger](https://github.com
 
 All state changes are executed as usual, they just won't trigger a render of the updated component until the component comes back from the frozen state.
 
-## Whan happens to the non-react state of the component after defrost? Like for example scroll position?
+## What happens to the non-react state of the component after defrost? Like for example scroll position?
 
 Since all the "native views" (DOM elements or platform-specific views in react native) are kept when the component is frozen their state (such as scroll position, text typed into text input fields, etc.) is restored when they come back from the frozen state.
 In fact, they are just the same component (same DOM nodes for react-dom / same views for react-native).
@@ -124,8 +124,8 @@ After the component comes back from frozen state, it will render and pick up the
 There are few ways that we are aware of when `<Freeze>` can alter the app behavior:
 
 1. When attempting to freeze parts of the app that is visible to the user at a given moment -- in this case the frozen part is going to be replaced by the placeholder (or just by nothing if no placeholder is provided). So unless you really want this behavior make sure to only set `freeze` to `true` when the given subtree should not be visible and you expect user to not interact with it. A good example are screens on the navigation stack that are down the stack hierarchy when you push more content.
-2. When you rely on the frozen parts layout to propertly position the unfrozen parts. Note that when component is in frozen state it gets replaced by a placeholder (or by nothing if you don't provide one). This may impact the layout of the rest of your application. This can be workaround by making placeholder take the same amount of space as the view it replaces, or by only freezing parts that are positioned absolutely (e.g. the component that takes up the whole screen).
-3. When component render method has side-effects that relay on running for all prop/state updates. Typically, performing side-effects in render is undesirable when writing react code but can happen in your codebase nontheless. Note that when subtree is frozen your component may not be rendered for all the state updates and render method won't execute for some of the changes that happen during that phase. However, when the component gets back from the frozen state it will render with the most up-to-date version of the state, and if that suffice for the side-effect logic to be correct you should be ok.
+2. When you rely on the frozen parts layout to properly position the unfrozen parts. Note that when component is in frozen state it gets replaced by a placeholder (or by nothing if you don't provide one). This may impact the layout of the rest of your application. This can be workaround by making placeholder take the same amount of space as the view it replaces, or by only freezing parts that are positioned absolutely (e.g. the component that takes up the whole screen).
+3. When component render method has side-effects that relay on running for all prop/state updates. Typically, performing side-effects in render is undesirable when writing react code but can happen in your codebase nonetheless. Note that when subtree is frozen your component may not be rendered for all the state updates and render method won't execute for some of the changes that happen during that phase. However, when the component gets back from the frozen state it will render with the most up-to-date version of the state, and if that suffice for the side-effect logic to be correct you should be ok.
 
 <br/>
 <hr/>
