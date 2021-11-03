@@ -1,0 +1,35 @@
+name: Run tests
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "*"
+  push:
+    branches:
+      - main
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: test-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn
+      - name: Run unit tests
+        run: yarn test:unit
+      - name: Run linter
+        run: yarn test:lint
+      - name: Check types
+        run: yarn test:types
+      - name: Build
+        run: yarn test:build
