@@ -14,7 +14,7 @@ It is important to note that while frozen component subtrees are replaced with a
 
 The most prominent use case is navigation in React Native apps, which is typically follows a stack-based approach.
 When opening a new screen, we push it onto a stack but also keep the previous screen on the stack in case you want to go back to them later.
-Since we want to keep all the state on that previous screens, the components rendering it are kept by the stack, which result in them receiving updates (e.g. redux store changes) and getting rendered even thought they are completely obstructed by other screens.
+Since we want to keep all the state on that previous screens, the components rendering it are kept by the stack, which result in them receiving updates (e.g. redux store changes) and getting rendered even though they are completely obstructed by other screens.
 With react-freeze, we are able to suspend renders for such screens and as a result save React from doing unnecessary computation (reconciliation, sending view change updates, etc).
 
 # Quick start with react-navigation (React Native) 🧭
