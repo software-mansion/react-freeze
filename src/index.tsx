@@ -14,8 +14,8 @@ function Suspender({
 }) {
   const promiseCache = useRef<StorageRef>({}).current;
   if (freeze && !promiseCache.promise) {
-    promiseCache.promise = new Promise((res) => {
-      promiseCache.resolve = res;
+    promiseCache.promise = new Promise((resolve) => {
+      promiseCache.resolve = resolve;
     });
     throw promiseCache.promise;
   } else if (freeze) {
