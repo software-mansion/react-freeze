@@ -8,7 +8,7 @@ Prevent React component subtrees from rendering.
 
 # What is this? 🤔
 
-This library allows for freezing renders of the parts of the React component tree using `Suspense` mechanism introduced in React 17.
+This library allows for freezing renders of the parts of the React component tree using `Suspense` mechanism introduced in React 16.6.
 The main use-case for this library is to avoid unnecessary re-renders for parts of the app that are not visible to the user at a given moment.
 It is important to note that while frozen component subtrees are replaced with a placeholder view, the actual components **are not unmounted** and hence their React state and corresponding native view instances are retained (DOM elements for react-dom or platform-native views for React Native apps) keeping things like scroll position, input state, or loaded images (for `<img>` components) unchanged.
 
@@ -49,7 +49,7 @@ The new react-native-screens library is compatible with React Navigation v5 and 
 
 # Quick start - using Freeze directly (React and React Native) ⚡
 
-> In order to use this package you'll have to be using React 17 or higher, or React Native 0.64 or higher.
+> In order to use this package you'll have to be using React 16.6.3 or higher, or React Native 0.64 or higher.
 
 Install `react-freeze` package from npm:
 
