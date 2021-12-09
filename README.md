@@ -49,7 +49,7 @@ The new react-native-screens library is compatible with React Navigation v5 and 
 
 # Quick start - using Freeze directly (React and React Native) ⚡
 
-> In order to use this package you'll have to be using React 16.6.3 or higher, or React Native 0.64 or higher.
+> In order to use this package you'll have to be using React 16.6.3 (stable Suspense) or higher, or React Native 0.64 or higher.
 
 Install `react-freeze` package from npm:
 
