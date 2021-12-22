@@ -8,14 +8,14 @@ Prevent React component subtrees from rendering.
 
 # What is this? 🤔
 
-This library allows for freezing renders of the parts of the React component tree using `Suspense` mechanism introduced in React 17.
-The main use-case for this library is to avoid unnecessary re-renders for parts of the app that are not visible to the user at a given moment.
-It is important to note that while frozen component subtrees are replaced with a placeholder view, the actual components **are not unmounted** and hence their React state and corresponding native view instances are retained (DOM elements for react-dom or platform-native views for React Native apps) keeping things like scroll position, input state, or loaded images (for `<img>` components) unchanged.
+This library let's you freeze the renders of parts of the React component tree using `Suspense` mechanism introduced in React 17.
+The main use case of this library is to avoid unnecessary re-renders of parts of the app that are not visible to the user at a given moment.
+The frozen components **are not unmounted** when they are replaced with a placeholder view, so their React state and corresponding native view instances are retained during the freeze (DOM elements for `react-dom` or platform-native views for React Native apps) keeping things like scroll position, input state, or loaded images (for `<img>` components) unchanged.
 
-The most prominent use case is navigation in React Native apps, which is typically follows a stack-based approach.
-When opening a new screen, we push it onto a stack but also keep the previous screen on the stack in case you want to go back to them later.
-Since we want to keep all the state on that previous screens, the components rendering it are kept by the stack, which result in them receiving updates (e.g. redux store changes) and getting rendered even though they are completely obstructed by other screens.
-With react-freeze, we are able to suspend renders for such screens and as a result save React from doing unnecessary computation (reconciliation, sending view change updates, etc).
+The most prominent use case is the navigation in React Native apps, which typically is based on a stack.
+When opening a new screen, we push the screen onto the stack but also keep the previous screens on the stack in case the user goes back to them later.
+Since we want to keep the state of those previous screens, the components rendering it are retained on the stack, which results in them receiving updates (e.g. redux store changes) and getting re-rendered, even though they are completely covered by other screens.
+With `react-freeze`, we are able to suspend renders for the hidden screens and, as a result, save React from doing unnecessary computation (such as reconciliation, sending view change updates, etc.).
 
 # Quick start with react-navigation (React Native) 🧭
 
