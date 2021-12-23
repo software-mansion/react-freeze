@@ -8,7 +8,7 @@ Prevent React component subtrees from rendering.
 
 # What is this? 🤔
 
-This library let's you freeze the renders of parts of the React component tree using `Suspense` mechanism introduced in React 17.
+This library lets you freeze the renders of parts of the React component tree using `Suspense` mechanism introduced in React 17.
 The main use case of this library is to avoid unnecessary re-renders of parts of the app that are not visible to the user at a given moment.
 The frozen components **are not unmounted** when they are replaced with a placeholder view, so their React state and corresponding native view instances are retained during the freeze (DOM elements for `react-dom` or platform-native views for React Native apps) keeping things like scroll position, input state, or loaded images (for `<img>` components) unchanged.
 
