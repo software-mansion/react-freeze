@@ -29,7 +29,7 @@
     "freeze"
   ],
   "peerDependencies": {
-    "react": "^17.0.0"
+    "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",
