@@ -61,7 +61,8 @@
   },
   "files": [
     "dist",
-    "src"
+    "!dist/*.test.d.ts",
+    "src/index.tsx"
   ],
   "np": {
     "branch": "main"
