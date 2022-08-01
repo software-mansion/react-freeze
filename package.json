@@ -1,6 +1,6 @@
 {
   "name": "react-freeze",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Freeze",
   "license": "MIT",
   "repository": "software-mansion/react-freeze",
@@ -51,13 +51,13 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "microbundle-crl": "^0.13.10",
+    "np": "^7.6.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^18.2.0",
     "react-scripts": "^3.4.1",
     "react-test-renderer": "^18.2.0",
-    "typescript": "^3.7.5",
-    "np": "^7.6.2"
+    "typescript": "^3.7.5"
   },
   "files": [
     "dist",
@@ -66,5 +66,5 @@
   ],
   "np": {
     "branch": "main"
-	}
+  }
 }
