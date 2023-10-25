@@ -1,9 +1,6 @@
 import React, { Suspense, Fragment } from "react";
 
-const infinitePromise = new Promise(
-  // @ts-ignore
-  (resolve) => {}
-);
+const infiniteThenable = { then() {} };
 
 function Suspender({
   freeze,
@@ -13,7 +10,7 @@ function Suspender({
   children: React.ReactNode;
 }) {
   if (freeze) {
-    throw infinitePromise;
+    throw infiniteThenable;
   }
   return <Fragment>{children}</Fragment>;
 }
