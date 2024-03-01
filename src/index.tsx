@@ -2,26 +2,23 @@ import React, { Suspense, Fragment } from "react";
 
 const infiniteThenable = { then() {} };
 
-function Suspender({
-  freeze,
-  children,
-}: {
+interface SuspenderProps {
   freeze: boolean;
   children: React.ReactNode;
-}) {
+}
+
+function Suspender({ freeze, children }: SuspenderProps) {
   if (freeze) {
     throw infiniteThenable;
   }
   return <Fragment>{children}</Fragment>;
 }
 
-interface Props {
-  freeze: boolean;
-  children: React.ReactNode;
+interface FreezeProps extends SuspenderProps {
   placeholder?: React.ReactNode;
 }
 
-export function Freeze({ freeze, children, placeholder = null }: Props) {
+export function Freeze({ freeze, children, placeholder = null }: FreezeProps) {
   return (
     <Suspense fallback={placeholder}>
       <Suspender freeze={freeze}>{children}</Suspender>
