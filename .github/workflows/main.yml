@@ -17,11 +17,11 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v5
+      - name: Use Node.js 22
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version: 22
           cache: "yarn"
       - name: Install dependencies
         run: yarn
