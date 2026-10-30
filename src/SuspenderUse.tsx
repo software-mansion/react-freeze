@@ -1,41 +1,29 @@
 import React, { Fragment } from "react";
 import { SuspenderProps } from "./SuspenderLegacy";
 
-interface FreezeThenable {
-  then(onFulfilled: () => void): void;
+interface FreezePromise {
+  promise: Promise<void>;
   resolve(): void;
 }
 
-function createFreezeThenable(): FreezeThenable {
-  let listeners: Array<() => void> = [];
-  let done = false;
-  return {
-    then(onFulfilled) {
-      if (done) {
-        onFulfilled();
-      } else {
-        listeners.push(onFulfilled);
-      }
-    },
-    resolve() {
-      done = true;
-      const pending = listeners;
-      listeners = [];
-      pending.forEach((listener) => listener());
-    },
-  };
+function createFreezePromise(): FreezePromise {
+  let resolvePromise!: () => void;
+  const promise = new Promise<void>((resolve) => {
+    resolvePromise = resolve;
+  });
+  return { promise, resolve: resolvePromise };
 }
 
 export function SuspenderUse({ freeze, children }: SuspenderProps) {
-  const thenableRef = React.useRef<FreezeThenable>(null);
+  const freezeRef = React.useRef<FreezePromise>(null);
   if (freeze) {
-    if (thenableRef.current === null) {
-      thenableRef.current = createFreezeThenable();
+    if (freezeRef.current === null) {
+      freezeRef.current = createFreezePromise();
     }
-    React.use(thenableRef.current as unknown as PromiseLike<void>);
-  } else if (thenableRef.current !== null) {
-    thenableRef.current.resolve();
-    thenableRef.current = null;
+    React.use(freezeRef.current.promise);
+  } else if (freezeRef.current !== null) {
+    freezeRef.current.resolve();
+    freezeRef.current = null;
   }
   return <Fragment>{children}</Fragment>;
 }
