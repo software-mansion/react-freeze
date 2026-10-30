@@ -59,6 +59,8 @@
   "files": [
     "dist",
     "!dist/*.test.d.ts",
-    "src/index.tsx"
+    "src/index.tsx",
+    "src/SuspenderLegacy.tsx",
+    "src/SuspenderUse.tsx"
   ]
 }

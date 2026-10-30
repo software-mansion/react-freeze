@@ -1,34 +1,9 @@
-import React, { Suspense, Fragment, use } from "react";
+import React, { Suspense } from "react";
+import { SuspenderLegacy, SuspenderProps } from "./SuspenderLegacy";
+import { SuspenderUse } from "./SuspenderUse";
 
-interface SuspenderProps {
-  freeze: boolean;
-  children: React.ReactNode;
-}
-
-function Suspender({ freeze, children }: SuspenderProps) {
-  const promiseRef = React.useRef<Promise<void>>(null);
-  const resolverRef = React.useRef<() => void>(null);
-  if (promiseRef.current === null && freeze) {
-    promiseRef.current = new Promise<void>((resolve) => {
-      resolverRef.current = resolve;
-    });
-  }
-
-  if (!freeze && resolverRef.current != null) {
-    resolverRef.current();
-    resolverRef.current = null;
-  }
-
-  if (promiseRef.current !== null) {
-    use(promiseRef.current);
-  }
-
-  if (!freeze) {
-    promiseRef.current = null;
-  }
-
-  return <Fragment>{children}</Fragment>;
-}
+const Suspender =
+  typeof React.use === "function" ? SuspenderUse : SuspenderLegacy;
 
 interface FreezeProps extends SuspenderProps {
   placeholder?: React.ReactNode;
