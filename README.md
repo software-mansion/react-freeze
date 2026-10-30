@@ -6,6 +6,10 @@
 Prevent React component subtrees from rendering.
 </p>
 
+[![Ad](https://swm-delivery.com/www/images/zone-gh-react-freeze-1?n=1)](https://swm-delivery.com/www/delivery/ck-slug.php?zoneid=zone-gh-react-freeze-1&n=1)
+[![Ad](https://swm-delivery.com/www/images/zone-gh-react-freeze-2?n=1)](https://swm-delivery.com/www/delivery/ck-slug.php?zoneid=zone-gh-react-freeze-2&n=1)
+[![Ad](https://swm-delivery.com/www/images/zone-gh-react-freeze-3?n=1)](https://swm-delivery.com/www/delivery/ck-slug.php?zoneid=zone-gh-react-freeze-3&n=1)
+
 # What is this? 🤔
 
 This library lets you freeze the renders of parts of the React component tree using `Suspense` mechanism introduced in React 17.
