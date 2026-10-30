@@ -1,18 +1,9 @@
-import React, { Suspense, Fragment } from "react";
+import React, { Suspense } from "react";
+import { SuspenderLegacy, SuspenderProps } from "./SuspenderLegacy";
+import { SuspenderUse } from "./SuspenderUse";
 
-const infiniteThenable = { then() {} };
-
-interface SuspenderProps {
-  freeze: boolean;
-  children: React.ReactNode;
-}
-
-function Suspender({ freeze, children }: SuspenderProps) {
-  if (freeze) {
-    throw infiniteThenable;
-  }
-  return <Fragment>{children}</Fragment>;
-}
+const Suspender =
+  typeof React.use === "function" ? SuspenderUse : SuspenderLegacy;
 
 interface FreezeProps extends SuspenderProps {
   placeholder?: React.ReactNode;
